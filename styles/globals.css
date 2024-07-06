@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+
+
+
+@layer utilities {
+  .prose-dark {
+    --tw-prose-body: #e5e7eb;
+    --tw-prose-headings: #ffffff;
+    --tw-prose-lead: #d1d5db;
+    --tw-prose-links: #93c5fd;
+    --tw-prose-bold: #ffffff;
+    --tw-prose-counters: #9ca3af;
+    --tw-prose-bullets: #6b7280;
+    --tw-prose-hr: #374151;
+    --tw-prose-quotes: #9ca3af;
+    --tw-prose-quote-borders: #4b5563;
+    --tw-prose-captions: #9ca3af;
+    --tw-prose-code: #d1d5db;
+    --tw-prose-pre-code: #e5e7eb;
+    --tw-prose-pre-bg: #1f2937;
+    --tw-prose-th-borders: #4b5563;
+    --tw-prose-td-borders: #374151;
+  }
+
+  .prose-light {
+    --tw-prose-body: #374151;
+    --tw-prose-headings: #111827;
+    --tw-prose-lead: #4b5563;
+    --tw-prose-links: #2563eb;
+    --tw-prose-bold: #111827;
+    --tw-prose-counters: #6b7280;
+    --tw-prose-bullets: #9ca3af;
+    --tw-prose-hr: #e5e7eb;
+    --tw-prose-quotes: #6b7280;
+    --tw-prose-quote-borders: #d1d5db;
+    --tw-prose-captions: #6b7280;
+    --tw-prose-code: #4b5563;
+    --tw-prose-pre-code: #374151;
+    --tw-prose-pre-bg: #f3f4f6;
+    --tw-prose-th-borders: #d1d5db;
+    --tw-prose-td-borders: #e5e7eb;
+  }
+}
