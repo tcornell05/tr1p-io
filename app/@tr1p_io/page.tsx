@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import { Image, Card, CardHeader, CardBody, CardFooter, Divider, Link, Button, Modal, ModalHeader, ModalBody, ModalFooter, ModalContent, useDisclosure } from "@nextui-org/react";
+import { Image, Card, CardHeader, CardBody, CardFooter, Divider, Link, Button, Modal, ModalHeader, ModalBody, ModalFooter, ModalContent, useDisclosure, Spacer } from "@nextui-org/react";
 import { DM_Mono } from 'next/font/google';
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { FlipWords } from "@/components/ui/flip-words";
@@ -40,20 +40,22 @@ export default function Home() {
         backdrop={"blur"}
         isDismissable={false}
         isKeyboardDismissDisabled={true}
-        className={`font-sans`}>
-        <ModalContent>
+        className={`font-sans`}
+        placement={`center`}
+      >
+        <ModalContent className="flex justify-center items-center">
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1"></ModalHeader>
-              <ModalBody className="flex flex-row justify-center">
+              <ModalBody className="flex justify-center items-center p-0">
                 <Image
                   src="img/macer.png"
                   alt="Selected Image"
-                  className="object-cover"
-                  style={{ width: '100%' }}
+                  className="object-contain"
+                  style={{ maxHeight: '80vh', width: 'auto' }}
                 />
               </ModalBody>
-              <ModalFooter>
+              <ModalFooter className="w-full justify-center">
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
@@ -62,12 +64,12 @@ export default function Home() {
           )}
         </ModalContent>
       </Modal>
-      <div className={clsx("w-full dark:bg-gray-800 bg-white relative overflow-hidden")}>
+      <div className={clsx("w-full dark:bg-gray-800 bg-white relative overflow-hidden sm:overflow-visible")}>
         <WavyBackground backgroundFill="rgb(17 24 39 / 92%)" className="">
           <Vortex backgroundColor="#18181b00" rangeY={10000} particleCount={20} className="" />
-          <div className="flex p-8 mt-10">
-            <div className="lg:basis-3/5 flex-row mx-auto">
-              <BackgroundGradient className="p-[8px] ">
+          <div className="flex p-4 sm:p-8 mt-10">
+            <div className="lg:basis-3/5 flex-row mx-auto max-h-screen sm:max-h-full overflow-y-auto">
+              <BackgroundGradient className="p-[8px]">
                 <Card className={`${FONT_DM_MONO.className} bg-gray-800 rounded-none`}>
                   <CardHeader>
                     <div className="flex flex-col">
@@ -83,23 +85,23 @@ export default function Home() {
                   <Divider />
                   <CardFooter>
                     <div className="flex flex-col md:flex-row md:justify-between w-full">
-                      <div className="grid grid-cols-2 gap-4 mb-4 md:mb-0 md:flex md:flex-wrap md:gap-4 md:items-center md:w-auto">
+                      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 mb-4 md:mb-0 md:flex md:flex-wrap md:gap-4 md:items-center md:w-auto">
                         <a
                           href="https://github.com/tcornell05"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="transform hover:-translate-y-1 transition duration-400"
                         >
-                          <Button color="primary">GitHub</Button>
+                          <Button color="primary" className="w-full md:w-auto">GitHub</Button>
                         </a>
                         <Link href="/resume" className="transform hover:-translate-y-1 transition duration-400">
-                          <Button color="secondary">Resume</Button>
+                          <Button color="secondary" className="w-full md:w-auto">Resume</Button>
                         </Link>
                         <Link href="/posts" className="transform hover:-translate-y-1 transition duration-400">
-                          <Button color="success">Blog</Button>
+                          <Button color="success" className="w-full md:w-auto">Blog</Button>
                         </Link>
                         <Button
-                          className="transform hover:-translate-y-1 transition duration-400"
+                          className="transform hover:-translate-y-1 transition duration-400 w-full md:w-auto"
                           color="warning"
                           onClick={() => {
                             onOpen();
@@ -108,8 +110,8 @@ export default function Home() {
                           My Dog
                         </Button>
                       </div>
-                      <Link href="/generate" className="md:ml-auto w-full md:w-auto shadow-[0_0_0_3px_#000000_inset] px-6 py-2 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400 h-full md:h-auto">
-                        <Button>Image Gen</Button>
+                      <Link href="/generate" className="md:w-auto shadow-[0_0_0_3px_#000000_inset] bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400 h-full md:h-auto w-full md:w-auto">
+                        <Button className="bg-transparent w-full md:w-auto">AI Image Fun</Button>
                       </Link>
                     </div>
                   </CardFooter>
