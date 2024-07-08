@@ -38,8 +38,8 @@ export const RenderPost = ({ BlogPost }) => {
               <FaHome />
             </a>
           </div>
-          <article className="relative w-full">
-            <TracingBeam className="px-12">
+          <article className="relative w-full p-0">
+            <TracingBeam className="sm:px-0 lg:px-12">
               <Card isFooterBlurred className="h-[450px] rounded-none bg-gray-800">
                 {image && (
                   <Image src={image} alt={title} className="z-0 w-full h-full object-cover" layout="fill" />
