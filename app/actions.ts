@@ -11,7 +11,6 @@ export async function handleImageGeneration(formData, test): Promise<ImageReturn
   let openai = new OpenAI({
     apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
   });
-  console.log('tryingh')
   let imgReturn = {
     success: true,
     message: "Image generated successfully.",
