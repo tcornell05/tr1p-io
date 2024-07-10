@@ -5,6 +5,8 @@ interface ImageReturn {
   message: string;
   url: string;
 }
+
+
 export async function handleImageGeneration(formData, test): Promise<ImageReturn> {
   let openai = new OpenAI({
     apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
@@ -21,7 +23,7 @@ export async function handleImageGeneration(formData, test): Promise<ImageReturn
         model: "dall-e-3",
         prompt: formData.prompt,
         n: 1,
-        size: "1024x1024",
+        size: "1792x1024",
       })
 
       imgReturn.success = true;

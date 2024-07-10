@@ -19,6 +19,8 @@ interface GeneratedImage {
   prompt: string;
   loading: boolean;
 }
+
+export const maxDuration = 300;
 const Drawer = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [prompt, setPrompt] = useState(""); // Add state to hold the Textarea value
