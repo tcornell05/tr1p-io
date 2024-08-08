@@ -78,9 +78,14 @@ export default function Home() {
                   </CardHeader>
                   <Divider />
                   <CardBody>
-                    <span>Thanks for stopping by my little corner of the internet. At the ripe age of 32 I've devoted my professional career as a <FlipWords words={words} /></span>
-                    <p>. I have a general love for all things computer science that started merely as a fascination and deep admiration with how a computer even works. Which led to a general knack of picking things apart and creating end-to-end systems of all sizes. I've been professionally coding since 2013, particularly in the ad-tech industry. I'm a lover of games, music, science, and space. My love for learning seems to grow with age. I'm devoted to spending the next decades of my life <em>creating things.</em>
+                    <span>Thanks for stopping by my little corner of the internet. I've devoted my professional career as a <FlipWords words={words} /></span>
+                    <p>
+                      <br /> I love all things computer science, which started merely as a fascination and deep admiration with how a computer even works. Which led to a general knack of picking things apart and creating end-to-end systems of all sizes. I've been professionally coding since 2013, particularly in the ad-tech industry building distributed Real-time bidding systems (On AWS, primarily in Go).
+                      <br /><br />I'm a lover of games, music, science, and space. My love for learning seems to grow with age. I'm devoted to spending the next decades of my life <em>creating things.</em>
+                      <br /> <br /> You won't find much here other than a semi-outdated resume and some opinion pieces on my <a href="/posts" target="_BLANK" className="text-pink-500">dev journal</a>. This project in particular was built with Next.JS as an opportunity to mess around with some new front-end tech. Enjoy.
                     </p>
+                    <br />
+                    <blockquote style={{ textAlign: "left", marginRight: "10" }}>-Tyler</blockquote>
                   </CardBody>
                   <Divider />
                   <CardFooter>
@@ -110,17 +115,17 @@ export default function Home() {
                           My Dog
                         </Button>
                       </div>
-                      <Link href="/generate" className="md:w-auto shadow-[0_0_0_3px_#000000_inset] bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400 h-full md:h-auto w-full md:w-auto">
-                        <Button className="bg-transparent w-full md:w-auto">AI Image Fun</Button>
-                      </Link>
+                      {/* <Link href="/generate" className="md:w-auto shadow-[0_0_0_3px_#000000_inset] bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400 h-full md:h-auto w-full md:w-auto"> */}
+                      {/*   <Button className="bg-transparent w-full md:w-auto">AI Image Fun</Button> */}
+                      {/* </Link> */}
                     </div>
                   </CardFooter>
                 </Card>
               </BackgroundGradient>
             </div>
           </div>
-        </WavyBackground>
-      </div>
+        </WavyBackground >
+      </div >
     </>
   );
 }

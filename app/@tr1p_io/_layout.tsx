@@ -3,10 +3,7 @@ import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Providers } from "../providers";
-import { NavbarTr1pio } from "@/components/navbarTr1pio";
-import { Boxes } from "components/ui/background-boxes";
-import { Link } from "@nextui-org/link";
-import { cn } from "@/lib/utils";
+
 import clsx from "clsx";
 import React from "react";
 
