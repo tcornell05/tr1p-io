@@ -29,7 +29,7 @@ function SpotlightHome() {
 }
 
 export default function Home() {
-  const words = ["software engineer", "developer", "dev-ops engineer" "full-stack developer", "nerd"];
+  const words = ["software engineer", "developer", "dev-ops engineer", "full-stack developer", "nerd"];
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <>
