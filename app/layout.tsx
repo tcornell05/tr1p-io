@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import 'prism-themes/themes/prism-synthwave84.css';
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
@@ -73,11 +74,11 @@ export default function RootLayout({
 
   return (
 
-		<PropertyLayout>
-			{propertyContent}
-			{/*Conditional for rendering children. This is what makes it fallback to non-slot implementation */}
-			{shouldRenderChildren && children}
-		</PropertyLayout>
+    <PropertyLayout>
+      {propertyContent}
+      {/*Conditional for rendering children. This is what makes it fallback to non-slot implementation */}
+      {shouldRenderChildren && children}
+    </PropertyLayout>
 
 
   );

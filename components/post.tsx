@@ -2,15 +2,12 @@
 import React from 'react';
 import { AnimatePresence } from 'framer-motion';
 import getFormattedDate from "@/app/utils/getFormattedDate";
-import { getSortedPostsData, getPostData } from "@/app/utils/posts";
-import { notFound } from "next/navigation";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Image from 'next/image';
 import { Vortex } from '@/components/ui/vortex';
 import { BackgroundGradient } from '@/components/ui/background-gradient';
 import { CanvasRevealEffect } from '@/components/ui/canvas-reveal-effect';
 import { TracingBeam } from '@/components/ui/tracing-beam';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FaArrowLeft, FaHome } from 'react-icons/fa';
 
