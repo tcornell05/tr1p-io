@@ -1,7 +1,8 @@
+
 ---
-title: "Using Go Interfaces does not = Less code"
+title: "Start WET, Then Go DRY: The Pragmatic Use of Go Interfaces"
 date: "2024-07-10"
-description: "Go interfaces can be confusing to the majority of devs coming from different languages, for a variety of reasons. They are powerful and crucial to the internal workings of Go itself. However, a common misconception is that they need, or should be used. This is often not the case when getting your code off the ground.."
+description: "Go interfaces are powerful, but they don't always lead to less code. It’s better to start with repetition, identify natural patterns, and then abstract with interfaces or other structures."
 author: "tr1p"
 image: "/img/sghetti-code.png"
 keywords:
@@ -11,9 +12,9 @@ keywords:
   - Go Interfaces
 ---
 
-### Why Go Interfaces Do Not Always Mean Less Code
+### Start WET, Then Go DRY: The Pragmatic Use of Go Interfaces
 
-Go, known for its simplicity and efficiency, often gets praised for its robust concurrency model and minimalistic design. One feature that frequently garners attention is its use of interfaces. Interfaces in Go provide a powerful way to define behaviors and achieve polymorphism without the heavy syntax of traditional object-oriented languages. However, there’s a common misconception that utilizing interfaces in Go will naturally lead to writing less code. This isn’t always the case. In fact, focusing too much on interfaces early on can sometimes complicate your codebase and add unnecessary complexity. Here's why it's often better to write clean, DRY (Don't Repeat Yourself) code before considering interfaces for abstraction.
+Go, known for its simplicity and efficiency, often gets praised for its robust concurrency model and minimalistic design. One feature that frequently garners attention is its use of interfaces. Interfaces in Go provide a powerful way to define behaviors and achieve polymorphism without the heavy syntax of traditional object-oriented languages. However, there’s a common misconception that utilizing interfaces in Go will naturally lead to writing less code. This isn’t always the case. In fact, focusing too much on interfaces early on can sometimes complicate your codebase and add unnecessary complexity. Here's why it’s often better to start with WET (Write Everything Twice) code and let natural repetition guide your use of interfaces and other abstractions.
 
 #### The Misconception: Interfaces Mean Less Code
 
@@ -25,121 +26,74 @@ The idea that interfaces will automatically reduce code is rooted in their abili
 
 3. **Complexity in Implementation**: Forcing different types to conform to an interface can lead to convoluted implementations, especially when the types don’t naturally fit into the same abstraction.
 
-#### The Alternative: DRY First, Interfaces Later
+#### WET is Fine Initially: Let Repetition Guide Your Abstraction
 
-A more effective approach is to focus on writing DRY code initially, ensuring your program is clean, efficient, and free of unnecessary repetition. Here’s how you can do it:
+When starting a new project or feature, it’s natural to write similar code in multiple places—this is often referred to as WET (Write Everything Twice). And that’s okay. In the early stages, it’s more important to get your code working than to worry about perfect abstraction. Over time, as you write more code and naturally start repeating certain patterns, that’s when you should consider refactoring and introducing abstractions like interfaces.
 
-1. **Identify Repetition and Patterns**: Before thinking about interfaces, look for repeated patterns in your code. These could be functions, data structures, or logic that appears in multiple places.
+##### Why Start WET?
 
-2. **Refactor for Reusability**: Refactor these repeated patterns into reusable functions or methods. This step ensures that your code is modular and easier to manage without adding unnecessary layers of abstraction.
+1. **Clarity and Focus**: Writing code directly and repetitively allows you to focus on solving the immediate problem without getting bogged down by designing abstractions prematurely. It helps you understand the problem space better.
 
-3. **Evaluate the Need for Interfaces**: Once your code is DRY, evaluate where interfaces might genuinely add value. Ask yourself:
-   - Do I have multiple types that share common behavior?
-   - Will an interface make the code more readable or maintainable?
-   - Is there a clear benefit to adding this level of abstraction?
+2. **Avoiding Premature Abstraction**: Prematurely abstracting code can lead to over-engineering. If you haven’t yet seen how your code will evolve, you might create abstractions that don’t fit well with future requirements, making your code harder to maintain.
 
-4. **Introduce Interfaces Judiciously**: If the answer to the above questions is yes, introduce interfaces in a way that enhances the code without overcomplicating it. Ensure that the interfaces are well-defined and represent meaningful abstractions.
+3. **Natural Abstraction Points**: By starting WET, you’ll begin to notice where you’re repeating yourself. These repetitions are natural indicators of where an abstraction (like an interface) might be beneficial.
 
-#### Practical Example
+##### Moving from WET to DRY
 
-Consider a scenario where you have a program that processes different payment methods: credit card and PayPal. Instead of starting with an interface for payment methods, you might begin with concrete implementations:
+Once you’ve identified these repetitions, that’s when you can start refactoring your code:
+
+1. **Identify Repeated Patterns**: Look for places in your code where you’re performing similar operations or handling similar logic. These are prime candidates for refactoring.
+
+2. **Introduce Interfaces or Structs**: When you see that multiple types are performing the same kinds of actions, consider introducing an interface to encapsulate this behavior. Similarly, if you have data structures that share common fields, a struct might be the right abstraction.
+
+3. **Refactor with Purpose**: The key is to refactor with a clear goal in mind—whether it’s reducing repetition, making the code easier to extend, or simplifying testing.
+
+#### Practical Example: From WET to DRY
+
+Let’s say you start with a WET implementation where you handle different types of notifications:
 
 ```go
-type CreditCard struct {
-    Number string
-    CVV    string
-    Amount float64
+func SendEmailNotification(email string, message string) {
+    fmt.Printf("Sending email to %s: %s\n", email, message)
 }
 
-func (cc CreditCard) ProcessPayment() string {
-    // Mock processing logic
-    return fmt.Sprintf("Processed credit card payment of %f", cc.Amount)
-}
-
-type PayPal struct {
-    Email  string
-    Amount float64
-}
-
-func (pp PayPal) ProcessPayment() string {
-    // Mock processing logic
-    return fmt.Sprintf("Processed PayPal payment of %f", pp.Amount)
+func SendSMSNotification(phone string, message string) {
+    fmt.Printf("Sending SMS to %s: %s\n", phone, message)
 }
 ```
 
-Initially, you can keep these implementations separate. This keeps the code straightforward and focused on the task at hand. If you later find that you need to handle these payment methods polymorphically, you can introduce an interface:
+At first, this approach works fine. But as your application grows and you introduce more notification types, you start to notice the repetition. That's when you can refactor and introduce an interface:
 
 ```go
-type PaymentProcessor interface {
-    ProcessPayment() string
+type Notifier interface {
+    SendNotification(message string)
 }
 
-func Process(p PaymentProcessor) {
-    fmt.Println(p.ProcessPayment())
+type EmailNotifier struct {
+    Email string
+}
+
+func (e EmailNotifier) SendNotification(message string) {
+    fmt.Printf("Sending email to %s: %s\n", e.Email, message)
+}
+
+type SMSNotifier struct {
+    Phone string
+}
+
+func (s SMSNotifier) SendNotification(message string) {
+    fmt.Printf("Sending SMS to %s: %s\n", s.Phone, message)
+}
+
+func NotifyAll(notifiers []Notifier, message string) {
+    for _, notifier := range notifiers {
+        notifier.SendNotification(message)
+    }
 }
 ```
 
-Now, let's see how adding interfaces can lead to more code:
+Now you’ve introduced an interface that eliminates repetition, making your code DRY and easier to maintain.
 
-Without Interfaces:
+#### Conclusion: Embrace WET, Transition to DRY
 
-```go
-func main() {
-    cc := CreditCard{Number: "1234-5678-9012-3456", CVV: "123", Amount: 100.0}
-    pp := PayPal{Email: "user@example.com", Amount: 150.0}
-    
-    fmt.Println(cc.ProcessPayment())
-    fmt.Println(pp.ProcessPayment())
-}
-```
-
-With Interfaces:
-
-```go
-type PaymentProcessor interface {
-    ProcessPayment() string
-}
-
-type CreditCard struct {
-    Number string
-    CVV    string
-    Amount float64
-}
-
-func (cc CreditCard) ProcessPayment() string {
-    return fmt.Sprintf("Processed credit card payment of %f", cc.Amount)
-}
-
-type PayPal struct {
-    Email  string
-    Amount float64
-}
-
-func (pp PayPal) ProcessPayment() string {
-    return fmt.Sprintf("Processed PayPal payment of %f", pp.Amount)
-}
-
-func Process(p PaymentProcessor) {
-    fmt.Println(p.ProcessPayment())
-}
-
-func main() {
-    cc := CreditCard{Number: "1234-5678-9012-3456", CVV: "123", Amount: 100.0}
-    pp := PayPal{Email: "user@example.com", Amount: 150.0}
-
-    Process(cc)
-    Process(pp)
-}
-```
-
-As you can see, introducing the `PaymentProcessor` interface adds more code:
-
-1. **Interface Definition**: You have to define the `PaymentProcessor` interface.
-2. **Process Function**: You add an extra function to handle processing.
-3. **Refactor Calls**: You change the direct calls to `ProcessPayment` to use the `Process` function.
-
-While the interface-based approach provides flexibility and can be beneficial for larger or more complex systems, it’s clear that it does not inherently result in less code. Instead, it introduces more boilerplate and indirection.
-
-#### Conclusion
-
-While Go interfaces are a powerful tool for achieving polymorphism and defining shared behaviors, they don’t automatically lead to less code. In many cases, focusing too early on interfaces can add unnecessary complexity and abstraction. Instead, prioritize writing DRY code to ensure your program is clean and efficient. Introduce interfaces only when they provide clear benefits and align naturally with your abstractions. This approach leads to more maintainable and understandable code, leveraging Go’s strengths without falling into common pitfalls.
+Starting WET allows you to focus on solving the problem at hand without unnecessary abstraction. As you develop, the points of repetition will naturally emerge, guiding you to refactor and introduce interfaces or other abstractions where they truly add value. This approach ensures that your code evolves organically, staying both simple and efficient.
