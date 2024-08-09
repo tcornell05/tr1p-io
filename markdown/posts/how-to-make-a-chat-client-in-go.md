@@ -19,8 +19,7 @@ So, you're sitting there, staring at your terminal, thinking, "Wouldn't it be co
 
 ### Step 1: Setting Up Shop
 
-First things first, let's get organized. No one likes messy code, right? We’re going to keep things neat and tidy with a little project structure that even Marie Kondo would approve of.
-
+First things first, let's get organized.
 Here’s the plan:
 
 ```
@@ -33,7 +32,7 @@ Here’s the plan:
   server.go
 ```
 
-What’s happening here? Well, `internal/chat` is where all the magic happens—the core chat service and some nifty color tricks. Meanwhile, `cmd` is where our chat clients and servers live. Think of it as the place where the magic spells are actually cast.
+What’s happening here? Well, `internal/chat` is where all the magic happens—the core chat service and some nifty color tricks. Meanwhile, `cmd` is where our chat client and server entry points live. 
 
 ### Step 2: Crafting the Chat Service
 
@@ -84,7 +83,7 @@ func (c *ChatService) StartServer(p int) error {
 }
 ```
 
-What’s happening here? This is the engine of our chat service—the thing that makes the magic happen. We’re starting a TCP server, accepting connections, and letting Go’s goroutines handle all the heavy lifting. It’s like having an army of minions, but way cooler.
+What’s happening here?  We’re starting a TCP server, accepting connections, and letting Go’s goroutines handle all the heavy lifting. 
 
 ### Step 3: Let’s Get Chatty
 
@@ -132,7 +131,7 @@ func (c *ChatService) handleConnection(conn net.Conn) {
 }
 ```
 
-This is where the action happens. Clients join, pick a name, and start chatting away. The `handleConnection` method is like the bouncer at the door—making sure everyone behaves and that messages get to where they need to go.
+This is where the action happens. This is where the clients connection lives on. Clients join, pick a name, and start chatting away. The `handleConnection` method is like the bouncer at the door—making sure everyone behaves and that messages get to where they need to go.
 
 ### Step 4: Adding Some Flair
 
