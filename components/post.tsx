@@ -19,6 +19,11 @@ export const RenderPost = ({ BlogPost }) => {
   const router = useRouter();
   const pubDate = getFormattedDate(date);
 
+  // Function to check if the image is a webm video
+  const isVideo = (imageUrl: string) => {
+    return imageUrl.endsWith('.webm');
+  };
+
   return (
     <div className="flex justify-center w-full bg-gray-900 text-gray-200">
       <Vortex backgroundColor="#18181b00" rangeY={10000} className="" />
@@ -41,7 +46,15 @@ export const RenderPost = ({ BlogPost }) => {
           <article className="relative w-full p-0">
             <TracingBeam className="sm:px-0 lg:px-12">
               <Card isFooterBlurred className="h-[450px] rounded-none bg-gray-800">
-                {image && (
+                {image && isVideo(image) ? (
+                  <video
+                    src={image}
+                    autoPlay
+                    loop
+                    muted
+                    className="z-0 w-full h-full object-cover"
+                  />
+                ) : (
                   <Image src={image} alt={title} className="z-0 w-full h-full object-cover" layout="fill" />
                 )}
                 <CardBody></CardBody>

@@ -1,4 +1,3 @@
-
 ---
 title: "Start WET, Then Go DRY: The Pragmatic Use of Go Interfaces"
 date: "2024-07-10"
