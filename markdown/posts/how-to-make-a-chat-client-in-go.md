@@ -236,4 +236,4 @@ func main() {
 
 And there you have it! You’ve just built a terminal chat program in Go. It’s simple, it’s colorful, and it’s a whole lot of fun. You could stop here, but if you’re like me, you’re already thinking about the next steps—group chats, better error handling, maybe even emojis. The sky’s the limit!
 
-If you want to check out the code, fork it, or just poke around, head on over to the [GitHub repo](https://github.com/tcornell05/go/demos/tcp-chat). Happy coding!
+If you want to check out the code, fork it, or just poke around, head on over to the [GitHub repo](https://github.com/tcornell05/go/tree/main/demos/tcp-chat). Happy coding!
