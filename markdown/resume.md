@@ -12,9 +12,10 @@
 **Company Overview:** Motive Interactive is an advertising platform focused on Mobile CPA/CPI campaigns utilizing OpenRTB programmatic buying technologies and various publisher APIs for network integrations.
 
 #### Developer Responsibilities:
-- Architected a multi-region DSP with an OpenRTB bidder, handling over 40k RPS with 10 ms response times on AWS.
+- Serve as primary platform architect for a multi-region DSP with an OpenRTB bidder, handling over 80k QPS  with -1ms  response times  on AWS (4 regions).
 - Developed publisher integration solutions, including REST API.
 - Built and maintained Motive’s web properties for intelligent traffic arbitrage on landing pages.
+- Develop enhanced real-time application monitoring systems
 - Designed and developed ETL systems for large-scale data processing for reporting and bidder use.
 - Developed a DSP admin UI portal for campaign setup, reporting, and audience management.
 - Created CI/CD workflows for automated testing and deployment.
@@ -36,7 +37,9 @@
 - Collaborated with data scientists to develop a machine learning platform consuming terabytes of data for modeling.
 
 #### Accomplishments:
-- **Leadership in Technical Design:** Led the design and implementation of a proprietary DSP, handling up to 80,000 requests per second at peak, with a dynamic campaign management system and reporting capabilities.
+- **Leadership in Technical Design:** 
+Led the design and implementation of a proprietary DSP, handling up to 80,000 requests per second at peak with sub ms response time, with a dynamic campaign management system and reporting/monitoring capabilities.
+
 - **Cost Efficiency:** Reduced AWS costs by $30,000 monthly, achieving a 50% reduction.
 - **Sustainable Solutions:** Developed a suite of internal tools still in use nearly a decade later.
 
