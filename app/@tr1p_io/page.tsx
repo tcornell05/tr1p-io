@@ -29,7 +29,7 @@ function SpotlightHome() {
 }
 
 export default function Home() {
-  const words = ["software engineer", "developer", "dev-ops engineer", "full-stack developer", "nerd"];
+  const words = ["backend engineer", "data engineer", "software engineer", "developer", "dev-ops engineer", "full-stack developer", "nerd"];
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <>
@@ -78,11 +78,11 @@ export default function Home() {
                   </CardHeader>
                   <Divider />
                   <CardBody>
-                    <span>Thanks for stopping by my little corner of the internet. I've devoted my professional career as a <FlipWords words={words} /></span>
+                    <span>Thanks for stopping by my little corner of the internet. I'm Tyler & I've devoted my professional career as a <FlipWords words={words} /></span>
                     <p>
                       <br /> I love all things computer science, which started merely as a fascination and deep admiration with how a computer even works. Which led to a general knack of picking things apart and creating end-to-end systems of all sizes. I've been professionally coding since 2013, particularly in the ad-tech industry building distributed Real-time bidding systems (On AWS, primarily in Go).
                       <br /><br />I'm a lover of games, music, science, and space. My love for learning seems to grow with age. I'm devoted to spending the next decades of my life <em>creating things.</em>
-                      <br /> <br /> You won't find much here other than a semi-outdated resume and some opinion pieces on my <a href="/posts" target="_BLANK" className="text-pink-500">dev journal</a>. This project in particular was built with Next.JS as an opportunity to mess around with some new front-end tech. Enjoy.
+                      <br /> <br /> You won't find much here other than a semi-outdated resume and some opinion pieces on my <a href="/posts" target="_BLANK" className="text-pink-500">dev journal</a>. This project in particular was built with Next.JS as an opportunity to mess around with some new front-end tech, as I don't get to much anymore. Enjoy.
                     </p>
                     <br />
                     <blockquote style={{ textAlign: "left", marginRight: "10" }}>-Tyler</blockquote>
