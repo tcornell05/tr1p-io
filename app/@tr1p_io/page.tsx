@@ -40,10 +40,10 @@ export default function Home() {
         backdrop={"blur"}
         isDismissable={false}
         isKeyboardDismissDisabled={true}
-        className={`font-sans`}
+        className={`font-sans dark:bg-gray-900`}
         placement={`center`}
       >
-        <ModalContent className="flex justify-center items-center">
+        <ModalContent className="flex justify-center items-center bg-white">
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1"></ModalHeader>
@@ -112,7 +112,7 @@ export default function Home() {
                             onOpen();
                           }}
                         >
-                          My Dog
+                          Dog
                         </Button>
                       </div>
                       {/* <Link href="/generate" className="md:w-auto shadow-[0_0_0_3px_#000000_inset] bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400 h-full md:h-auto w-full md:w-auto"> */}
