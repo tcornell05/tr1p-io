@@ -12,3 +12,4 @@ The blog is all done with .md files
 Same with the resume page!
 
 Deployed on vercel. Enjoy
+[tr1p.io](https://tr1p.io)
