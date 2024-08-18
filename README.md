@@ -1,4 +1,4 @@
-# Next.js 
+#  tr1p.io
 
 tr1p.io is my personal dev journal. Built with:
 
